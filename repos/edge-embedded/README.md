@@ -1,77 +1,176 @@
-# Edge Repos — Index
+# Edge & Embedded
 
-Total repos: 58
+**59 repos** for edge computing — ESP32, NVIDIA Jetson, ARM64, marine vessel bridges, holodeck simulations, and embedded agent onboarding across a dozen languages.
+
+---
+
+## What Is Edge in This Ecosystem?
+
+The edge/embedded layer brings the SuperInstance fleet to resource-constrained devices: microcontrollers (ESP32, RP2040), GPU edge boards (NVIDIA Jetson), ARM64 servers, and marine/industrial hardware. It's where the fleet meets the physical world.
+
+Key themes:
+
+1. **OpenConstruct** — a universal agent onboarding framework with a C ABI core and 12+ language SDKs
+2. **Holodeck** — MUD-style simulation environments ported to C, Rust, Go, Zig, CUDA
+3. **Vessel** — marine/industrial agent nodes for real-world deployment
+4. **Kintsugi** — mathematical fault tolerance ("beautiful error recovery")
+5. **Edge relay** — research and sensor data relay from edge to fleet
+
+---
+
+## Key Repositories
+
+### Holodeck (Multi-Language Simulation)
+
+The holodeck is a MUD-style simulation environment for fleet modeling — rooms are graph nodes, agents traverse rooms, gauges monitor state.
 
 | Repo | Language | Description |
 |------|----------|-------------|
-| [edge-benchmark](./edge-edge-benchmark.md) | Rust | Benchmarking primitives for edge runtimes |
-| [edge-conservation-rs](./edge-edge-conservation-rs.md) | Rust | Conservation-law verification for edge |
-| [edge-conservation-worker](./edge-edge-conservation-worker.md) | TypeScript | Cloudflare Worker for conservation verification |
-| [edge-relay-agent](./edge-edge-relay-agent.md) | Python | Standalone research relay |
-| [edge-research-relay](./edge-edge-research-relay.md) | Python | Edge research relay for academic papers |
-| [holodeck-c](./edge-holodeck-c.md) | C | Lightweight C holodeck for embedded |
-| [holodeck-core](./edge-holodeck-core.md) | Rust | Rust MUD engine for fleet simulation |
-| [holodeck-cuda](./edge-holodeck-cuda.md) | Cuda | GPU-resident holodeck (16K rooms) |
-| [holodeck-go](./edge-holodeck-go.md) | Go | Holodeck studio in Go |
-| [holodeck-rust](./edge-holodeck-rust.md) | Rust | GPU-accelerated simulation environment |
-| [holodeck-session-manager](./edge-holodeck-session-manager.md) | Python | Fleet observation and routing |
-| [holodeck-studio](./edge-holodeck-studio.md) | Python | Holodeck Studio — ideas actualize |
-| [holodeck-zig](./edge-holodeck-zig.md) | Zig | Holodeck studio in Zig |
-| [kintsugi-math](./edge-kintsugi-math.md) | Python | Mathematics of beautiful error recovery |
-| [kintsugi-math-c](./edge-kintsugi-math-c.md) | C | C99 golden repair mathematics |
-| [kintsugi-math-npm](./edge-kintsugi-math-npm.md) | TypeScript | TypeScript/npm kintsugi math |
-| [kintsugi-math-wasm](./edge-kintsugi-math-wasm.md) | Rust | Golden repair math as WASM |
-| [marine-gpu-edge](./edge-marine-gpu-edge.md) | Cuda | GPU edge computing for marine sensors |
-| [nexus-runtime](./edge-nexus-runtime.md) | Python | Runtime for connecting distributed services |
-| [open-mythos-edge](./edge-open-mythos-edge.md) | Python | Edge-optimized RDT for Jetson/ARM64 |
-| [openconstruct-abi](./edge-openconstruct-abi.md) | Rust | C ABI for OpenConstruct |
-| [openconstruct-c](./edge-openconstruct-c.md) | C | C bindings for OpenConstruct |
-| [openconstruct-catalog](./edge-openconstruct-catalog.md) | Rust | Tech catalog and module discovery |
-| [openconstruct-cs](./edge-openconstruct-cs.md) | C# | C# SDK for OpenConstruct |
-| [openconstruct-docs](./edge-openconstruct-docs.md) |  | Agent-centric documentation |
-| [openconstruct-esp32](./edge-openconstruct-esp32.md) | C++ | Embedded OpenConstruct for ESP32 |
-| [openconstruct-examples](./edge-openconstruct-examples.md) |  | OpenConstruct examples cookbook |
-| [openconstruct-go](./edge-openconstruct-go.md) | Go | Go SDK for OpenConstruct |
-| [openconstruct-hub](./edge-openconstruct-hub.md) | Makefile | OpenConstruct Integration Hub |
-| [openconstruct-java](./edge-openconstruct-java.md) | Java | Java binding for OpenConstruct |
-| [openconstruct-jetson](./edge-openconstruct-jetson.md) | C++ | GPU edge node on NVIDIA Jetson |
-| [openconstruct-jupyter](./edge-openconstruct-jupyter.md) | Python | Jupyter notebook integration |
-| [openconstruct-kernel](./edge-openconstruct-kernel.md) | Rust | OpenConstruct kernel |
-| [openconstruct-landing](./edge-openconstruct-landing.md) | HTML | Landing page |
-| [openconstruct-mercury](./edge-openconstruct-mercury.md) | Mercury | Formal verification in Mercury |
-| [openconstruct-modular](./edge-openconstruct-modular.md) | Rust | OpenConstruct modular |
-| [openconstruct-python](./edge-openconstruct-python.md) | Python | Python thin client |
-| [openconstruct-ruby](./edge-openconstruct-ruby.md) | Ruby | Ruby SDK |
-| [openconstruct-rust](./edge-openconstruct-rust.md) | Rust | Rust SDK |
-| [openconstruct-swift](./edge-openconstruct-swift.md) | Swift | Swift binding for iOS/macOS |
-| [openconstruct-ts](./edge-openconstruct-ts.md) | TypeScript | TypeScript SDK |
-| [openconstruct-zig](./edge-openconstruct-zig.md) | Zig | Zig binding |
-| [openmanus-fleet](./edge-openmanus-fleet.md) | Shell | OpenManus agent with Playwright |
-| [openmanus-vessel](./edge-openmanus-vessel.md) |  | OpenManus web scout |
-| [openmind](./edge-openmind.md) | Python | Agent proprioception + cellular computation |
-| [openmind-cellular](./edge-openmind-cellular.md) | Python | Openmind cellular |
-| [openmind-conductor](./edge-openmind-conductor.md) | Rust | Multi-agent orchestration with shared memory |
-| [openmind-esp32-bridge](./edge-openmind-esp32-bridge.md) | Rust | Motor neuron bridge to ESP32 |
-| [openmind-mirror](./edge-openmind-mirror.md) | Rust | Self-reflection for agent memory |
-| [openrooms](./edge-openrooms.md) | Rust | Agent-powered collaborative rooms |
-| [openshell-compatibility-audit](./edge-openshell-compatibility-audit.md) |  | Categorizes repos for OpenShell |
-| [openshell-pythagorean48](./edge-openshell-pythagorean48.md) | Rust | OpenShell wrapper for pythagorean48 |
-| [opensmile-bridge](./edge-opensmile-bridge.md) | Python | OpenSMILE bridge for voice features |
-| [vessel](./edge-vessel.md) | Python | Preserved workspace artifact |
-| [vessel-constellation](./edge-vessel-constellation.md) | Rust | Vessels as N-body gravitational system |
-| [vessel-prototype](./edge-vessel-prototype.md) | Python | Agent/Vessel separation prototype |
-| [vessel-room-navigator](./edge-vessel-room-navigator.md) | HTML | Boat as navigable 3D web space |
-| [vessel-template](./edge-vessel-template.md) | Python | Git-Agent vessel generator |
+| [holodeck-c](https://github.com/SuperInstance/holodeck-c) | C | Lightweight C implementation for embedded |
+| [holodeck-core](https://github.com/SuperInstance/holodeck-core) | Rust | Core simulation engine |
+| [holodeck-rust](https://github.com/SuperInstance/holodeck-rust) | Rust | Full Rust implementation |
+| [holodeck-cuda](https://github.com/SuperInstance/holodeck-cuda) | CUDA | GPU-accelerated simulation |
+| [holodeck-go](https://github.com/SuperInstance/holodeck-go) | Go | Go implementation |
+| [holodeck-zig](https://github.com/SuperInstance/holodeck-zig) | Zig | Systems-level implementation |
+| [holodeck-session-manager](https://github.com/SuperInstance/holodeck-session-manager) | — | Session management |
+| [holodeck-studio](https://github.com/SuperInstance/holodeck-studio) | — | Studio UI |
 
-## Category Overview
+### OpenConstruct (Agent Onboarding)
 
-Infrastructure, simulation, and tooling for the fleet at the edge.
+OpenConstruct is the universal agent onboarding framework — "any agent, any hardware, any language." It uses a C ABI as the universal interface, with language-specific SDKs wrapping it.
 
-**Sub-categories:**
-- **OpenConstruct:** 20+ language SDKs for agent onboarding (C ABI core)
-- **Holodeck:** MUD-style simulation (Rust, C, Go, Zig, CUDA, Python)
-- **Kintsugi:** Fault-tolerance mathematics (Python, C, TS, WASM)
-- **OpenMind:** Agent proprioception and muscle memory
-- **Vessel:** Agent runtime containers
-- **Edge:** Cloudflare Workers, benchmarks, conservation verification
-- **Other:** Marine GPU, OpenManus browser agents, OpenSMILE voice, OpenRooms
+| Repo | Language | Description |
+|------|----------|-------------|
+| [openconstruct-abi](https://github.com/SuperInstance/openconstruct-abi) | C ABI | The universal interface definition |
+| [openconstruct-c](https://github.com/SuperInstance/openconstruct-c) | C | C SDK |
+| [openconstruct-rust](https://github.com/SuperInstance/openconstruct-rust) | Rust | Rust SDK |
+| [openconstruct-python](https://github.com/SuperInstance/openconstruct-python) | Python | Python SDK |
+| [openconstruct-go](https://github.com/SuperInstance/openconstruct-go) | Go | Go SDK |
+| [openconstruct-ts](https://github.com/SuperInstance/openconstruct-ts) | TypeScript | TS SDK |
+| [openconstruct-zig](https://github.com/SuperInstance/openconstruct-zig) | Zig | Zig SDK |
+| [openconstruct-swift](https://github.com/SuperInstance/openconstruct-swift) | Swift | Swift SDK |
+| [openconstruct-java](https://github.com/SuperInstance/openconstruct-java) | Java | Java SDK |
+| [openconstruct-cs](https://github.com/SuperInstance/openconstruct-cs) | C# | C# SDK |
+| [openconstruct-ruby](https://github.com/SuperInstance/openconstruct-ruby) | Ruby | Ruby SDK |
+| [openconstruct-esp32](https://github.com/SuperInstance/openconstruct-esp32) | C++ | ESP32 embedded SDK |
+| [openconstruct-jetson](https://github.com/SuperInstance/openconstruct-jetson) | C++ | NVIDIA Jetson GPU edge SDK |
+| [openconstruct-kernel](https://github.com/SuperInstance/openconstruct-kernel) | — | Kernel module |
+| [openconstruct-modular](https://github.com/SuperInstance/openconstruct-modular) | — | Modular build |
+| [openconstruct-hub](https://github.com/SuperInstance/openconstruct-hub) | — | Central hub |
+| [openconstruct-docs](https://github.com/SuperInstance/openconstruct-docs) | — | Documentation |
+| [openconstruct-examples](https://github.com/SuperInstance/openconstruct-examples) | — | Examples |
+| [openconstruct-catalog](https://github.com/SuperInstance/openconstruct-catalog) | — | Component catalog |
+| [openconstruct-landing](https://github.com/SuperInstance/openconstruct-landing) | — | Landing page |
+| [openconstruct-mercury](https://github.com/SuperInstance/openconstruct-mercury) | — | Mercury variant |
+| [openconstruct-jupyter](https://github.com/SuperInstance/openconstruct-jupyter) | Python | Jupyter integration |
+
+### Vessel (Marine/Industrial)
+
+| Repo | Description |
+|------|-------------|
+| [vessel](https://github.com/SuperInstance/vessel) | Core vessel definition |
+| [vessel-prototype](https://github.com/SuperInstance/vessel-prototype) | Prototype implementation |
+| [vessel-template](https://github.com/SuperInstance/vessel-template) | Template for new vessels |
+| [vessel-constellation](https://github.com/SuperInstance/vessel-constellation) | Fleet of vessels |
+| [vessel-room-navigator](https://github.com/SuperInstance/vessel-room-navigator) | Room navigation for vessels |
+
+### Kintsugi (Fault Tolerance)
+
+Kintsugi Math applies the Japanese art of golden repair to software — fault tolerance as aesthetic principle.
+
+| Repo | Language | Description |
+|------|----------|-------------|
+| [kintsugi-math](https://github.com/SuperInstance/kintsugi-math) | Python | Mathematical patterns for graceful error recovery |
+| [kintsugi-math-c](https://github.com/SuperInstance/kintsugi-math-c) | C | C implementation |
+| [kintsugi-math-npm](https://github.com/SuperInstance/kintsugi-math-npm) | JS | NPM package |
+| [kintsugi-math-wasm](https://github.com/SuperInstance/kintsugi-math-wasm) | WASM | WebAssembly compilation |
+
+### OpenMind
+
+| Repo | Description |
+|------|-------------|
+| [openmind](https://github.com/SuperInstance/openmind) | Core openmind system |
+| [openmind-conductor](https://github.com/SuperInstance/openmind-conductor) | Conductor |
+| [openmind-cellular](https://github.com/SuperInstance/openmind-cellular) | Cellular automata |
+| [openmind-mirror](https://github.com/SuperInstance/openmind-mirror) | Mirror system |
+| [openmind-esp32-bridge](https://github.com/SuperInstance/openmind-esp32-bridge) | ESP32 bridge |
+
+### Edge Relay & Workers
+
+| Repo | Description |
+|------|-------------|
+| [edge-relay-agent](https://github.com/SuperInstance/edge-relay-agent) | Standalone research relay |
+| [edge-research-relay](https://github.com/SuperInstance/edge-research-relay) | Research data relay |
+| [edge-conservation-rs](https://github.com/SuperInstance/edge-conservation-rs) | Conservation tracking on edge (Rust) |
+| [edge-conservation-worker](https://github.com/SuperInstance/edge-conservation-worker) | Conservation worker |
+| [edge-benchmark](https://github.com/SuperInstance/edge-benchmark) | Edge benchmarking |
+| [nexus-runtime](https://github.com/SuperInstance/nexus-runtime) | Runtime for connecting distributed services |
+
+### Marine & GPU Edge
+
+| Repo | Language | Description |
+|------|----------|-------------|
+| [marine-gpu-edge](https://github.com/SuperInstance/marine-gpu-edge) | CUDA | GPU edge computing for marine sensor fusion |
+| [open-mythos-edge](https://github.com/SuperInstance/open-mythos-edge) | — | Mythos edge deployment |
+
+### Other
+
+| Repo | Description |
+|------|-------------|
+| [openrooms](https://github.com/SuperInstance/openrooms) | Open room system |
+| [openshell-pythagorean48](https://github.com/SuperInstance/openshell-pythagorean48) | Pythagorean 48 shell |
+| [openshell-compatibility-audit](https://github.com/SuperInstance/openshell-compatibility-audit) | Compatibility auditing |
+| [opensmile-bridge](https://github.com/SuperInstance/opensmile-bridge) | OpenSMILE audio bridge |
+| [openmanus-fleet](https://github.com/SuperInstance/openmanus-fleet) | OpenManus fleet |
+| [openmanus-vessel](https://github.com/SuperInstance/openmanus-vessel) | OpenManus vessel |
+
+---
+
+## Architecture
+
+```
+┌────────────────────────────────────────────────────┐
+│              Fleet / Cloud Layer                     │
+└───────────────────────┬────────────────────────────┘
+                        │
+┌───────────────────────▼────────────────────────────┐
+│            Edge Relay Layer                          │
+│   (edge-relay-agent, nexus-runtime, edge-benchmark) │
+└───────────────────────┬────────────────────────────┘
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+┌───────▼──────┐ ┌──────▼──────┐ ┌──────▼──────┐
+│   ESP32      │ │  Jetson     │ │  ARM64      │
+│  (micro)     │ │  (GPU edge) │ │  (server)   │
+└───────┬──────┘ └──────┬──────┘ └──────┬──────┘
+        │               │               │
+        └───────────────┼───────────────┘
+                        │
+┌───────────────────────▼────────────────────────────┐
+│         OpenConstruct ABI Layer                      │
+│   C ABI + 12+ language SDKs                          │
+│   onboard() → register → exchange messages           │
+└───────────────────────┬────────────────────────────┘
+                        │
+┌───────────────────────▼────────────────────────────┐
+│         Holodeck Simulation Layer                    │
+│   (C, Rust, Go, Zig, CUDA — rooms, agents, gauges)  │
+└────────────────────────────────────────────────────┘
+```
+
+---
+
+## Assessment
+
+The edge/embedded ecosystem bridges the gap between fleet infrastructure and physical devices. The OpenConstruct universal ABI with 12+ language bindings is ambitious — bringing AI agent protocols to ESP32 microcontrollers is genuinely interesting, though resource constraints make full integration challenging.
+
+The multi-language holodeck ports (C, Rust, Go, Zig, CUDA) show commitment to accessibility. The marine GPU edge computing for vessel sensor fusion is specialized and potentially valuable for oceanography and naval applications.
+
+Kintsugi math — fault tolerance as aesthetic principle — is a creative framing for an important problem, though the fault tolerance space is crowded with established patterns.
+
+The vessel system (prototype, template, constellation, room navigator) provides a structured way to deploy fleet agents to physical hardware.
+
+---
+
+*Individual repo summaries are in `edge-{repo-name}.md` files in this directory.*

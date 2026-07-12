@@ -1,70 +1,177 @@
-# Constraint Repos — Index
+# Constraint Theory
 
-Total repos: 45
+**46 repos** applying geometric constraint satisfaction to real-world problems — CSP solvers, Hamiltonian constraints, Laman rigidity, scheduling, and the unified constraint theory core that solves floating-point drift.
+
+---
+
+## What Is Constraint Theory Here?
+
+Constraint theory is the SuperInstance approach to solving problems not by integrating equations of motion, but by **directly satisfying constraints**. Instead of computing F=ma and accumulating error, you snap values to the nearest configuration that satisfies all constraints exactly.
+
+The flagship library, `constraint-theory-core`, solves the universal problem of **floating-point drift** — the IEEE 754 arithmetic errors that compound over time in physics simulations, multiplayer games, and distributed systems. It uses **Eisenstein integer lattice (A₂)** to snap continuous values to exact discrete coordinates with bounded error.
+
+### Key Principles
+
+1. **Zero drift** — values snap to lattice points, eliminating cumulative error
+2. **Geometric satisfaction** — constraints are geometric, not algebraic
+3. **Laman rigidity** — structural guarantees borrowed from rigidity theory
+4. **Eisenstein lattice** — hexagonal coordinate system with 6-fold symmetry
+5. **Constraint DSL** — declarative YAML-like language for constraint graphs
+
+---
+
+## Key Repositories
+
+### Core Theory
 
 | Repo | Language | Description |
 |------|----------|-------------|
-| [constraint-audio](./constraint-constraint-audio.md) | Rust | Rust audio DSP built on lattice consonance theory |
-| [constraint-bench-suite](./constraint-constraint-bench-suite.md) | C | AVX-512 + CUDA benchmark suite |
-| [constraint-crdt](./constraint-constraint-crdt.md) | Rust | CRDT-backed constraint states for distributed consensus |
-| [constraint-demo](./constraint-constraint-demo.md) | HTML | Browser-based fleet constraint awareness demo |
-| [constraint-demos](./constraint-constraint-demos.md) | HTML | Interactive HTML demos for constraint theory |
-| [constraint-dialect](./constraint-constraint-dialect.md) | C++ | MLIR Constraint Dialect |
-| [constraint-dsl](./constraint-constraint-dsl.md) | Python | Declarative YAML-like DSL for constraint graphs |
-| [constraint-dynamics](./constraint-constraint-dynamics.md) | Rust | Physics of constraints |
-| [constraint-dynamics-rs](./constraint-constraint-dynamics-rs.md) | Rust | Constraint dynamics for agent behavior |
-| [constraint-flow](./constraint-constraint-flow.md) | TypeScript | Enterprise automation with constraint guarantees |
-| [constraint-flow-protocol](./constraint-constraint-flow-protocol.md) | Python | A2A constraint sharing at FLUX bytecode level |
-| [constraint-gpu-kernels](./constraint-constraint-gpu-kernels.md) | Cuda | Production CUDA kernels for constraint theory |
-| [constraint-hamiltonian](./constraint-constraint-hamiltonian.md) | Rust | Hamiltonian constraint systems |
-| [constraint-inference](./constraint-constraint-inference.md) | TypeScript | Reverse-engineers constraints from behavior |
-| [constraint-instrument](./constraint-constraint-instrument.md) | Python | Constraint Instrument with 7 modes |
-| [constraint-kernel-verify](./constraint-constraint-kernel-verify.md) | Cuda | Exhaustive verification for CUDA kernels |
-| [constraint-mcp-server](./constraint-constraint-mcp-server.md) | Python | MCP server for constraint theory |
-| [constraint-mux](./constraint-constraint-mux.md) | Rust | Serial port multiplexer with consonance analysis |
-| [constraint-physics](./constraint-constraint-physics.md) | Rust | ZHC constraint-based physics engine |
-| [constraint-playground](./constraint-constraint-playground.md) | Makefile | CSP solver with GDSII layout |
-| [constraint-ranch](./constraint-constraint-ranch.md) | TypeScript | Gamified multi-agent system |
-| [constraint-schedule](./constraint-constraint-schedule.md) | Rust | Constraint-satisfaction scheduling |
-| [constraint-snap](./constraint-constraint-snap.md) | Python | Geometric constraint snapping |
-| [constraint-solver-viz](./constraint-constraint-solver-viz.md) | Python | Visualization tools for constraint solving |
-| [constraint-studio](./constraint-constraint-studio.md) | HTML | Studio-quality constraint theory visualization |
-| [constraint-substrate](./constraint-constraint-substrate.md) | Python | Constraint primitives in Rust, C, Python |
-| [constraint-synth](./constraint-constraint-synth.md) | Python | Constraint-theory synthesizer |
-| [constraint-theory-backup](./constraint-constraint-theory-backup.md) | TypeScript | Backup of Constraint Theory workspace |
-| [constraint-theory-core](./constraint-constraint-theory-core.md) | Rust | Unified geometric constraint theory core |
-| [constraint-theory-core-cuda](./constraint-constraint-theory-core-cuda.md) | Rust | Preserved workspace artifact |
-| [constraint-theory-ecosystem](./constraint-constraint-theory-ecosystem.md) | Python | Ecosystem overview and documentation |
-| [constraint-theory-engine-cpp-lua](./constraint-constraint-theory-engine-cpp-lua.md) | C++ | C++ constraint engine with LuaJIT |
-| [constraint-theory-llvm](./constraint-constraint-theory-llvm.md) | Rust | LLVM backend for constraint theory |
-| [constraint-theory-math](./constraint-constraint-theory-math.md) | Python | Sheaf cohomology and GL(9) holonomy |
-| [constraint-theory-mlir](./constraint-constraint-theory-mlir.md) | C++ | Custom MLIR dialect for constraint theory |
-| [constraint-theory-mojo](./constraint-constraint-theory-mojo.md) | Mojo | Mojo + MLIR constraint engine |
-| [constraint-theory-papers](./constraint-constraint-theory-papers.md) | TeX | Research papers on constraint theory |
-| [constraint-theory-py](./constraint-constraint-theory-py.md) | Python | Python constraint theory library v0.3.0 |
-| [constraint-theory-python](./constraint-constraint-theory-python.md) | Python | Python bindings for constraint-theory-core |
-| [constraint-theory-research](./constraint-constraint-theory-research.md) | Python | Mathematical foundations and research |
-| [constraint-theory-rust-python](./constraint-constraint-theory-rust-python.md) | Rust | Rust constraint engine with PyO3 |
-| [constraint-theory-web](./constraint-constraint-theory-web.md) | JavaScript | WASM demos for constraint theory |
-| [constraint-tminus-bridge](./constraint-constraint-tminus-bridge.md) | JavaScript | Cognitive constraint networks |
-| [constraint-toolkit](./constraint-constraint-toolkit.md) | Python | Constraint space analysis toolkit |
-| [constraint-viz](./constraint-constraint-viz.md) | Python | Multi-scale constraint visualization |
+| [constraint-theory-core](https://github.com/SuperInstance/constraint-theory-core) | Rust | The flagship — solves floating-point drift using Eisenstein lattice A₂. 83 tests, zero dependencies |
+| [constraint-theory-math](https://github.com/SuperInstance/constraint-theory-math) | Rust | Mathematical foundations |
+| [constraint-theory-research](https://github.com/SuperInstance/constraint-theory-research) | — | Research notes |
+| [constraint-theory-papers](https://github.com/SuperInstance/constraint-theory-papers) | — | Papers on constraint theory |
+| [constraint-theory-backup](https://github.com/SuperInstance/constraint-theory-backup) | — | Backup of theory work |
 
-## Category Overview
+### Multi-Language Implementations
 
-The constraint theory ecosystem is the mathematical core of SuperInstance. Centers on Eisenstein integer lattices (A2) for exact geometric computation, replacing floating-point arithmetic with lattice snapping for zero-drift determinism.
+| Repo | Language | Description |
+|------|----------|-------------|
+| constraint-theory-core | Rust | Reference implementation |
+| constraint-theory-core-cuda | CUDA | GPU-accelerated constraint solving |
+| constraint-theory-py | Python | Python implementation |
+| constraint-theory-python | Python | Alternative Python port |
+| constraint-theory-rust-python | Rust+Python | Hybrid Rust/Python |
+| constraint-theory-llvm | LLVM | LLVM IR compilation |
+| constraint-theory-mlir | MLIR | Multi-Level IR |
+| constraint-theory-mojo | Mojo | Mojo implementation |
+| constraint-theory-engine-cpp-lua | C++/Lua | Embedded engine |
+| constraint-theory-ecosystem | — | Ecosystem documentation |
+| constraint-theory-web | JavaScript | Web implementation |
 
-**Key results:**
-- 341B constraints/second on consumer GPU (RTX 4050)
-- FP64 is fastest precision on AMD Zen 5 (precision is free)
-- Formal proofs via Coq, verified across 60M inputs
-- 83 tests in core library, zero dependencies
+### Solvers & Satisfaction
 
-**Sub-categories:**
-- **Core theory:** constraint-theory-core, constraint-theory-math, constraint-theory-py
-- **Performance:** constraint-gpu-kernels, constraint-bench-suite, constraint-theory-llvm
-- **Compiler:** constraint-dialect, constraint-theory-mlir, constraint-theory-engine-cpp-lua
-- **Music:** constraint-audio, constraint-synth, constraint-instrument
-- **Distributed:** constraint-crdt, constraint-flow, constraint-flow-protocol
-- **Applications:** constraint-physics, constraint-schedule, constraint-ranch
-- **Tools:** constraint-mcp-server, constraint-dsl, constraint-toolkit
+| Repo | Language | Description |
+|------|----------|-------------|
+| constraint-hamiltonian | Rust | Hamiltonian constraint systems |
+| constraint-schedule | Rust | Constraint-satisfaction scheduling |
+| constraint-physics | Rust | ZHC constraint-based physics engine — replaces F=ma with direct constraint resolution |
+| constraint-dynamics | Rust | Constraint dynamics |
+| constraint-dynamics-rs | Rust | Rust dynamics variant |
+| constraint-inference | Rust | Inference under constraints |
+| constraint-crdt | Rust | CRDTs with constraint awareness |
+
+### DSL & Configuration
+
+| Repo | Language | Description |
+|------|----------|-------------|
+| constraint-dsl | Python | Declarative YAML-like DSL for constraint graphs |
+| constraint-dialect | Python | Dialect for constraint expressions |
+| constraint-flow | Rust | Constraint flow protocol |
+| constraint-flow-protocol | Rust | Protocol definition |
+
+### GPU & Performance
+
+| Repo | Language | Description |
+|------|----------|-------------|
+| constraint-gpu-kernels | CUDA | GPU kernels for parallel constraint solving |
+| constraint-kernel-verify | Rust | Kernel verification |
+| constraint-bench-suite | — | Benchmark suite |
+| constraint-mux | Rust | Multiplexer for constraint streams |
+
+### Tools & Visualization
+
+| Repo | Language | Description |
+|------|----------|-------------|
+| constraint-studio | — | Studio IDE for constraint editing |
+| constraint-playground | — | Interactive playground |
+| constraint-solver-viz | Python | Visualization tools for constraint solving |
+| constraint-viz | — | Visualization utilities |
+| constraint-toolkit | — | General toolkit |
+| constraint-instrument | — | Instrumentation |
+
+### Applications
+
+| Repo | Language | Description |
+|------|----------|-------------|
+| constraint-audio | Rust | Audio constraint processing |
+| constraint-synth | Rust | Constraint-driven synthesis |
+| constraint-ranch | Rust | Constraint ranch (distributed) |
+| constraint-snap | Rust | Lattice snapping |
+| constraint-substrate | Rust | Constraint substrate |
+| constraint-demo | Rust | Demo applications |
+| constraint-demos | Rust | Multiple demos |
+| constraint-mcp-server | — | MCP server interface |
+
+---
+
+## How It Works: Eisenstein Lattice Snapping
+
+The core insight: instead of representing values as IEEE 754 floats (which introduce drift), represent them as points on the **Eisenstein integer lattice** — a hexagonal grid where:
+
+- **Coordinates** are pairs (a, b) of integers
+- **Norm** is N(a,b) = a² − ab + b² (always non-negative)
+- **60° rotation** is (-b, a-b) — two subtractions and a negation
+- **D₆ symmetry** — all six rotations
+- **6.8× denser** than Pythagorean triples at the same norm bound
+- **Closed under multiplication** (ring property)
+
+When a computation would introduce drift, the result is **snapped** to the nearest Eisenstein lattice point, bounding error to ≤ √3/3 per operation.
+
+### Comparison with ℤ² (Square Lattice)
+
+The `eisenstein-vs-z2` benchmark rigorously compares hexagonal vs. square lattice snapping for 2D constraint resolution. The hexagonal lattice provides tighter packing and better error bounds.
+
+---
+
+## The Constraint Physics Engine
+
+`constraint-physics` replaces traditional force-integration physics with **Zero-Holonomy Constraint (ZHC)** satisfaction:
+
+| Traditional Physics | ZHC Physics |
+|--------------------|-------------|
+| Compute forces | Measure constraint violations |
+| Integrate F=ma | Resolve violations directly |
+| Error accumulates | Error bounded by lattice |
+| Needs small timesteps | Constraint-based, timestep-independent |
+| 2D, 3D | 2D (3D planned) |
+
+Laman rigidity theory provides structural guarantees — a graph is rigid iff it has 2n−3 edges satisfying the Laman condition. This means the constraint system can prove whether a structure is stable.
+
+---
+
+## The DSL
+
+The constraint DSL is a declarative YAML-like language for defining constraint graphs:
+
+```yaml
+constraints:
+  - type: bound
+    signal: velocity
+    lower: 0
+    upper: 300
+    severity: hard
+    
+  - type: delta
+    signal: velocity
+    max_delta: 15
+    window: per_frame
+    severity: hard
+    
+  - type: hamiltonian
+    energy: total_energy
+    tolerance: 0.001
+```
+
+---
+
+## Assessment
+
+The constraint theory ecosystem solves a real problem (floating-point drift) with elegant mathematics (Eisenstein lattice). The flagship library has 83 tests and zero dependencies. The multi-language implementations (Rust, CUDA, Python, LLVM, MLIR, Mojo, C++/Lua, Web) show serious commitment to portability.
+
+The physics engine (constraint-based instead of force-integration) is an interesting research direction with real theoretical backing (Laman rigidity). However, it's a research prototype — 2D only, limited collision detection, no broad-phase optimization.
+
+The DSL, studio, playground, and visualization tools form a complete development environment for constraint-based programming.
+
+---
+
+*Individual repo summaries are in `constraint-{repo-name}.md` files in this directory.*
