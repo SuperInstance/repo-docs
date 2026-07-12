@@ -727,4 +727,104 @@ essential for navigating the 4,098-repo cortex.
 │ lau-plato-tutor │  │              │  │ ternary-pid  │  │ crab         │
 │                 │  │              │  │ ternary-svm  │  │              │
 └────────┬────────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘
-         │
+         │         │                  │                 │                  │
+         └──────────────────┴────────┬────────┴──────────────────┘
+                                   │
+                          ┌────────▼────────┐
+                          │      EDGE       │
+                          │  (Deployment)   │
+                          │                 │
+                          │ ESP32 clients   │
+                          │ Jetson runtime  │
+                          │ ARM64 targets   │
+                          │ Vessel bridge   │
+                          │ Marine sensors  │
+                          └─────────────────┘
+
+### 6.1 Conservation Law Governance
+
+The equation **γ + η = C** (tension + entropy = constant) is enforced as a CI/CD
+check across the ecosystem. When a change increases tension (complexity),
+it must decrease entropy (disorder) by an equal amount. This prevents the
+ecosystem from accumulating both complexity AND chaos simultaneously.
+
+### 6.2 Deadband Protocol
+
+The signal chain from physical world to fleet decision:
+
+```
+Sensor → Deadband → Nano-model → LoRA → Fleet → Cloud
+  (raw)   (filter)   (tiny ML)   (adapt) (coord) (scale)
+```
+
+Each stage narrows the bandwidth — only meaningful changes propagate.
+This is why the ecosystem can run on edge hardware: most signals never
+leave the deadband.
+
+### 6.3 Fleet Orchestration
+
+Git-native coordination — no database, no message queue. The git layer IS
+the coordination layer:
+
+- **Commits** = task completion signals
+- **Branches** = parallel exploration threads
+- **Tags** = stable releases / memory checkpoints
+- **PRs** = negotiation between agents
+- **Issues** = work requests / attention signals
+- **Merge** = learning consolidation
+
+---
+
+## 7. The Crystallization Curve
+
+Intelligence in SuperInstance flows through a phase transition:
+
+```
+   LLM calls (expensive, general)
+        │
+        │  ← crystallization boundary
+        │
+   Compiled code (cheap, specific)
+```
+
+Over time, patterns that started as expensive LLM reasoning get encoded
+into FLUX bytecode, then compiled to native code. The system gets smarter
+AND cheaper simultaneously. This is the core economic engine.
+
+The three-layer stack maps to this curve:
+
+1. **Codespace** — Heavy LLM usage, experimental, expensive
+2. **Git-Agent** — Crystallizing patterns into code, medium cost
+3. **Edge** — Compiled, deterministic, nearly free
+
+---
+
+## 8. Implications
+
+### For AI Development
+SuperInstance demonstrates that git itself can serve as a neural substrate.
+The 4,098-repo org is not a portfolio — it's a working memory. Each repo
+is a memory cell that can be activated by reading its commit history.
+
+### For Edge Computing
+The deadband protocol + FLUX bytecode + ternary math create a path from
+cloud-grade AI to 4KB microcontrollers without losing intelligence.
+
+### For Software Engineering
+The oracle principle shows that well-written commit histories are more
+valuable than documentation. The commits capture reasoning, not just state.
+An agent reading `git log` gets more context than one reading a wiki.
+
+### For Creative Work
+The living repo doctrine means that creative flow states are preservable.
+A repo built during a burst of inspiration carries that energy in its commits.
+Re-reading those commits can re-ignite the same flow in a different context,
+a different place, a different time.
+
+---
+
+*This document is the intellectual thesis of SuperInstance. For the catalog
+of repos, see `../01-overview/MASTER-INDEX.md`. For practical usage, see
+`ONBOARDING-TEMPLATE.md`.*
+
+*Written 2026-07-12. Updated as the ecosystem evolves.*
