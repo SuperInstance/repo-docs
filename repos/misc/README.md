@@ -1,279 +1,264 @@
-# Miscellaneous Repos
+# Miscellaneous Repos — Index
 
-**1,200 repos** — the catchall for everything that doesn't fit neatly into the named categories. Algorithms, tools, experiments, games, web apps, one-off prototypes, agent tools, and genuinely strange projects.
+**Total repos: 1,200**
 
----
+The catch-all category for SuperInstance repositories that don't fit into a single dedicated category. Despite the "misc" label, this collection contains substantial, important projects spanning agent infrastructure, mathematical libraries, cultural math, game development, developer tools, and experimental research. Below, repos are organized by thematic groupings.
 
-## Overview
+## Category Overview
 
-The misc directory contains the most diverse and often the most interesting repos in the SuperInstance ecosystem. They defy simple categorization — spanning from pure math (algebraic geometry, Čech complexes) to practical tools (API gateways, cache layers) to creative experiments (MUD solitaire, AI lucid dreaming).
+### Thematic Distribution
 
-Repos are organized below by sub-theme, based on their content and cluster tags.
-
----
-
-## Algorithms & Data Structures (~60 repos)
-
-Pure algorithm implementations, mostly in Rust:
-
-| Repo | Description |
-|------|-------------|
-| aho-corasick-rs | Aho-Corasick multi-pattern string matching and automaton construction |
-| algebraic-geometry | Varieties, ideals, Groebner bases, affine and projective spaces |
-| algtop-rs | Algebraic topology in Rust |
-| ant-colony | Ant colony optimization with pheromone trails and evaporation |
-| approximation-theory | Polynomial interpolation, splines, Chebyshev polynomials, Padé approximants, Remez |
-| arithmetic-code | Arithmetic coding implementation |
-| avl-tree-rs | AVL self-balancing tree |
-| b-tree / b-tree-rs | B-tree implementations |
-| bwt-compress | Burrows-Wheeler transform compression |
-| bayesian-game | Bayesian game theory |
-| beam-search | Beam search algorithm |
-| braid-group-rs | Braid group mathematics |
-| branch-bound | Branch and bound optimization |
-| bregman-divergence | Bregman divergence metrics |
-| bloom-filter-rs | Bloom filter data structure |
-| bigint-rs | Arbitrary precision integers |
-| bezier-curve | Bézier curve math |
-| betti-curve / betti-music-computation | Betti numbers and musical computation |
-| cech-complex | Čech complex from point clouds via ball intersections |
-| cellular-automata-rs | Cellular automata in Rust |
-| chern-classes | Chern classes in algebraic geometry |
-| chess-engine | Chess engine |
-| chaos-rs | Chaos theory simulations |
-| combinatorics | Combinatorial algorithms |
-| complex-rs | Complex number types |
-| cfd-rs | Computational fluid dynamics |
+| Theme | Count | Description |
+|-------|-------|-------------|
+| Agent/Fleet Infrastructure | ~115 | I2I protocol, fleet coordination, swarm orchestration, murmur protocol |
+| Algorithms & Data Structures | ~58 | Trees, graphs, sorting, caching, bloom filters, ring buffers |
+| Music & Audio | ~51 | MIDI, harmony, rhythm, spectral analysis, groove |
+| AI/ML & Cognitive | ~51 | JEPA, embeddings, bandits, Kalman filters, Bayesian inference |
+| Systems & Infrastructure | ~54 | Caching, scheduling, routing, rate limiting, monitoring |
+| Web & Frontend | ~54 | Dashboards, landing pages, browser tools, UI components |
+| Logging & Applications | ~59 | MakerLog, BusinessLog, PlayerLog, StudyLog, activity tracking |
+| Conservation & Constraints | ~39 | Conservation laws, Noether theorem, spectral invariants |
+| Cultural Mathematics | ~31 | Griot, Quipu, Adinkra, Songline, Palaver traditions |
+| Game & MUD | ~30 | MUD arena, colony games, chess, voxel worlds |
+| Protocol & Networking | ~30 | WebSockets, gRPC, mux/demux, packet capture |
+| Shell & CLI Tools | ~33 | Prompt builders, TUI tools, terminal harnesses |
+| Templates & Archives | ~43 | README generators, starters, bootstraps, demos |
+| Dream & Cognitive | ~16 | Dream consolidation, lucid dreaming, creativity engines |
+| Renormalization & Scale | ~17 | RG flow, multi-scale analysis, coarse-graining |
+| Optimal Transport | ~12 | Wasserstein, Monge, Sinkhorn, Fisher-Rao |
+| Topology & Geometry | ~38 | Homology, Betti numbers, Čech complexes, sheaves |
+| Crypto & Security | ~35 | Lattice crypto, ZKP, ring signatures, commitments |
+| Physics & Thermo | ~22 | Hamiltonians, Boltzmann, thermodynamics, particles |
+| Compression & Encoding | ~11 | Huffman, BWT, LZ77, RLE, trie encoding |
 
 ---
 
-## Fleet Agent Infrastructure (~34 repos)
+## Major Thematic Groups
 
-| Repo | Description |
-|------|-------------|
-| beacon-protocol | Fleet discovery — Ship Protocol Layer 5 |
-| bottle-protocol | Async inter-agent messaging |
-| baton-skill / Baton / baton-router | Generational context handoff |
-| bootstrap-spark | Self-describing agent knowledge in 6 markdown files |
-| barracks | Agent barracks |
-| babel-vessel | Multi-language vessel |
-| band-agent-rs / band-ensemble-rs / band-midi-rs / band-protocol-rs | Musical agent coordination |
-| bordercollie | Herding agent for fleet coordination |
-| capitaine-agent | Captain agent |
-| cartridge-agent | Cartridge-based agent |
-| cat-agent | Cat-pattern agent |
-| claude-code-vessel | Claude Code integration vessel |
+### 1. Agent Communication & Fleet Infrastructure
 
----
+The I2I (Iron-to-Iron) protocol and fleet coordination layer:
+- **i2i-vessel** — Agent communication protocol with typed bottles, filesystem transport, ACK semantics
+- **iron-to-iron** — Agent-to-agent communication through git. "Iron sharpens iron. We don't talk, we commit."
+- **i2i-protocol** / **i2i-bottle-agent** — Protocol specification and bottle agent
+- **bottle-protocol** — Message-in-a-bottle async communication
+- **murmur-protocol** / **Murmur** / **Murmurer** — Gossip-style messaging
+- **beacon-protocol** — Beacon-based discovery
+- **commodore-protocol** / **ensign-protocol** — Naval hierarchy protocols
+- **federation-protocol** — Federation for multi-org fleets
+- **herdr-cocapn** — Herdr + Cocapn integration (agent multiplexer + fleet management)
+- **cluster-orchestrator** — Multi-agent cluster orchestration
 
-## Math Research (~8 repos)
+### 2. Cultural Mathematics
 
-| Repo | Description |
-|------|-------------|
-| adinkra-math | West African Adinkra symbols as mathematics — topology, supersymmetry, ML |
-| analog-spectral | Analog eigenvalue computation. "The thermostat IS the algorithm." |
-| analog-spline-theory | Spline theory from analog computing perspective |
-| arm-neon-eisenstein-bench | ARM NEON benchmarks for Eisenstein integer arithmetic |
-| avoidance-cascade / -c / -python | Avoidance cascade algorithms across C, Python, Rust |
-| avx512-constraint-checker | AVX-512 hardware for constraint checking |
-| amd-bf16-tools | AMD BF16 floating point tools |
+Mathematical traditions from non-Western cultures, each providing unique formal frameworks:
+- **griot-math** (+ npm, pypi, C, WASM, v2) — West African griot tradition: stories as data structures
+- **quipu-math** (+ C, npm, WASM) — Andean quipu: knot-based encoding
+- **adinkra-math** (+ npm, pypi) — West African Adinkra symbols as mathematical objects
+- **songline-math** (+ C, pypi, WASM) — Aboriginal songline navigation as graph theory
+- **palaver-math** (+ C, pypi) — African palaver dialogue as consensus mechanism
+- **west-african-math-c** / **west-african-math-rs** — Broader West African mathematics
+- **symmetry-math** (+ C, npm) — Symmetry groups from cultural patterns
+- **rhythm-math** (+ C, npm) — Cross-cultural rhythm mathematics
+- **rhythm-nation-math** — Rhythmic patterns at scale
+- **pythagorean48** / **pythagorean48-codes** — Pythagorean traditions
 
----
+### 3. Cognitive & Dream Systems
 
-## Constraint Theory Adjacent (~31 repos)
+- **dream-cycle** — When the cortex sleeps, it dreams. Consolidation, creativity, anomaly detection
+- **luciddreamer-agent** / **luciddreamer-os** / **luciddreamer-vision** — Lucid dream agent system
+- **dream-compiler** — Compiling dream-state programs
+- **formal-consciousness** — Formalizing consciousness mathematically
+- **memory-palace** / **memory-plimpsest** — Memory architecture systems
+- **cognitive-archaeology** — Archaeological analysis of cognitive artifacts
+- **cathedral-probe** — Deep cognitive probing
 
-| Repo | Description |
-|------|-------------|
-| categorical-agents / -c / -rs | Category theory applied to agents, in multiple languages |
-| categorical-coordination | Coordination via category theory |
-| avoidance-cascade | Constraint-based avoidance |
-| bounded-model | Bounded model checking |
-| cmidi-conservation / cmidi-core | MIDI-based conservation |
-| code-conservation | Code-level conservation enforcement |
-| climate-conservation | Climate modeling with conservation laws |
+### 4. Optimal Transport & Wasserstein
 
----
+- **wasserstein-agents** / **wasserstein-agents-rs** — Wasserstein distance for fleet comparison
+- **monge-fleet** / **monge-rs** — Monge formulation of optimal transport
+- **optimal-transport-rs** / **optimal-transport-agents-rs** — General OT framework
+- **wasserstein-narrative** — Narrative distance measurement
+- **wasserstein-ot-c** — C implementation
+- **fisher-rao** — Fisher-Rao information metric
+- **bregman-divergence** — Bregman divergence for clustering
 
-## CS Implementations (~18 repos)
+### 5. Renormalization Group & Multi-Scale
 
-| Repo | Description |
-|------|-------------|
-| actor-rs | Actor model in Rust |
-| allocator-rs | Memory allocator |
-| api-gateway | API gateway service |
-| api-doc-generator | API documentation generator |
-| async-rs | Async runtime |
-| auto-changelog | Automatic changelog generation |
-| autocoder | Code generation tool |
-| cache-layer / cache-rs / cache-guardian-c | Caching implementations |
-| circuit-breaker / -rs / circuitbreaker-rs | Circuit breaker patterns |
-| clockwork-schedule | Cron-like scheduling |
-| collision-detect | Collision detection |
-| color-space | Color space conversions |
-| compressor utilities | Various compression tools |
+- **renormalization-group** / **renormalization-group-rs** — RG framework for fleet analysis
+- **renormalization-learning-rs** / **renormalization-learning-c** — RG for learning
+- **renormalization-agent** — RG agent for multi-scale coordination
+- **population-scaling** — Population dynamics at scale
+- **scale-fold** — Multi-scale folding
 
----
+### 6. Music & Audio Mathematics
 
-## AI & Cognitive (~14 repos)
+- **betti-music-computation** — Betti numbers for musical structure
+- **holonomy-harmony** / **holonomy-harmony-rs** — Holonomy in musical harmony
+- **jazz-voicing-engine** — Jazz chord voicing generation
+- **groove-analyzer** — Groove pattern analysis
+- **lotka-beats** — Lotka-Volterra rhythmic dynamics
+- **tensor-midi** — Tensor-based MIDI processing
+- **spline-instrument** / **spline-midi-smooth** — Spline interpolation for MIDI
+- **tonnetz-constraints** — Tonnetz harmonic constraints
+- **resonance-engine** — Resonance modeling
 
-| Repo | Description |
-|------|-------------|
-| AI-Smart-Notifications | Smart notification system |
-| AI-Writings | AI-generated writing collection |
-| attention-economy | Attention as economic resource |
-| attention-daemon-early-version | Attention daemon (archived) |
-| autogen | Auto-generation system |
-| Auto-Tuning-Engine | Automatic parameter tuning |
-| bayesian-update | Bayesian updating |
-| belief-revision | Belief revision systems |
-| boltzmann-agent | Boltzmann machine agent |
-| cognitive-archaeology | Archaeological analysis of AI cognition |
-| CognitiveEngine | General cognitive engine |
-| collective-ai | Collective intelligence |
-| collective-inference | Multi-agent inference |
-| conversation-toolkit | Conversational AI tools |
+### 7. Algorithms & Data Structures
 
----
+Pure Rust implementations of classic CS:
+- **avl-tree-rs**, **red-black-tree-rs**, **b-tree-rs**, **b-tree**, **r-tree-rs**, **kd-tree-rs** — Tree structures
+- **skip-list-rs**, **segment-tree-rs**, **fenwick-tree-rs**, **treap-rs** — Index structures
+- **bloom-filter-rs** — Probabilistic membership
+- **ring-buffer** / **ring-buffer-rs** — Circular buffers
+- **suffix-array-rs**, **suffix-automaton-rs** — String data structures
+- **aho-corasick-rs** — Multi-pattern string search
+- **lsm-tree** — Log-structured merge tree
+- **delaunay-triang-rs** — Delaunay triangulation
+- **convex-hull-rs** — Convex hull computation
 
-## Maritime (~16 repos)
+### 8. Game & MUD Systems
 
-| Repo | Description |
-|------|-------------|
-| amplify-fishingtool | Fishing tool amplifier |
-| babel-vessel | Multi-language vessel |
-| bathydata-map | Bathymetric data mapping |
-| capitaine-agent | Captain agent for vessel command |
-| comms-engineer-vessel | Communications engineer vessel agent |
-| compass-rose | Navigation compass |
-| marine-related tools | Various marine utilities |
+- **mud-arena** — MUD combat arena
+- **mud-agent** / **mud-bridge** / **mud-expert-1** / **mud-solitaire** — MUD agents and tools
+- **mud2scummvm** — MUD to ScummVM bridge
+- **colony-games** — Colony simulation games
+- **chess-engine** — Chess engine
+- **gh-dungeons** — GitHub dungeons
+- **voxel-logic** / **voxelworks** — Voxel engines
+- **SuperInstance-gamedev** — Game development framework
 
----
+### 9. Logging & Activity Applications
 
-## GPU & Hardware (~7 repos)
+A family of structured logging applications:
+- **MakerLog** / **makerlog-agent** / **makerlog-ai** — Maker/hacker project log
+- **BusinessLog** / **businesslog-agent** — Business activity log
+- **PlayerLog** / **playerlog-agent** — Game player log
+- **StudyLog** / **studylog-agent** — Study tracking
+- **PersonalLog** / **personallog-agent** — Personal activity
+- **RealLog** / **reallog-agent** — Real-time logging
+- **DMLog** / **DMLog-AI** / **dmlog-agent** — D&D campaign tracker (Cloudflare Worker)
 
-| Repo | Description |
-|------|-------------|
-| amd-bf16-tools | AMD BF16 format tools |
-| arm-neon-eisenstein-bench | ARM NEON Eisenstein benchmarks |
-| async-gpu-dispatch | Async GPU kernel dispatch |
-| avx512-constraint-checker | AVX-512 constraint verification |
-| casting-call-gpu | GPU casting call |
-| cg-from-scratch | Computer graphics from scratch |
+### 10. Topology & TDA
 
----
+- **persistent-sheaf** / **persistent-sheaf-rs** — Persistent sheaf cohomology (13,062-char README)
+- **tda-rs** / **tda-c** — Topological data analysis
+- **homology-engine** — Homology computation
+- **witness-complex** / **witness-topology** / **witness-topology-rs** — Witness complexes
+- **cech-complex** — Čech complex construction
+- **betti-curve** — Betti curve analysis
+- **cospectral-explorer** — Spectral graph exploration
 
-## Music Agents (~6 repos)
+### 11. Physics & Thermodynamics
 
-| Repo | Description |
-|------|-------------|
-| band-agent-rs | Musical band agent coordination |
-| band-ensemble-rs | Ensemble coordination |
-| band-midi-rs | MIDI band protocol |
-| band-protocol-rs | Band communication protocol |
-| band-tminus-rs | T-minus band synchronization |
-| betti-music-computation | Betti numbers → music |
+- **boltzmann-agent** — Boltzmann machine agents
+- **free-energy** — Free energy computation
+- **thermal-budget** — Thermal budget tracking
+- **heat-spectral** — Heat kernel spectral analysis
+- **landauer** — Landauer limit computation
+- **quantum-thermo** — Quantum thermodynamics
+- **physics-clock** — Physics-based timing
 
----
+### 12. Crypto & Security
 
-## Games & Simulation (~4 repos)
+- **lattice-crypto** / **lattice-crypto-rs** — Lattice-based cryptography
+- **zkp-rs** / **zero-knowledge** — Zero-knowledge proofs
+- **ring-sign** — Ring signatures
+- **diffie-hellman-rs** — DH key exchange
+- **feistel-net** — Feistel cipher network
+- **homomorphic-hash** — Homomorphic hashing
+- **commitment-scheme** — Commitment schemes
+- **secret-sharing** / **secret-share** / **secret-manager** / **secret-scanner** — Secret management
 
-| Repo | Description |
-|------|-------------|
-| arena-combat-analyst-1 | Combat analysis agent |
-| colony-games | Colony simulation games |
-| colony-cell | Cellular colony simulation |
-| mud-solitaire | "The viral demo" — AI plays solitaire through a text MUD while a browser mirrors every move |
+### 13. Compression & Encoding
 
----
+- **huffman-code** / **huffman-entropy** — Huffman coding
+- **arithmetic-code** — Arithmetic coding
+- **bwt-compress** — Burrows-Wheeler transform
+- **delta-encode** — Delta encoding
+- **run-length** — Run-length encoding
+- **fold-compression** — Fold-based compression
 
-## Web & Tools (~7 repos)
+### 14. Polyformalism
 
-| Repo | Description |
-|------|-------------|
-| cloudflare-vibe | Cloudflare vibes coding |
-| cloudflare-code | Cloudflare Workers code |
-| capitaineai-com-pages / capitaine-ai-pages | GitHub Pages sites |
-| blog-posts | Blog post content |
-| brand-assets | Brand asset collection |
-| clawcanvas / clawcraft / clawmatrix | Creative web tools |
+An experiment in expressing the same constraint kernel across 13 programming languages:
+- **polyformalism** — Core experiment: same 3 functions, 13 languages, 2,100 test vectors
+- **polyformalism-a2a-js** / **polyformalism-a2a-python** — JS/Python implementations
+- **polyformalism-languages** — Language comparison
+- **polyformalism-thinking** — Conceptual framework
+- **polyformalism-turbo-shell** — Turbo shell variant
+- **linguistic-polyformalism-shell** — Linguistic analysis
 
----
+### 15. Free Probability
 
-## Notable Standouts
+- **free-probability** — "The only implementation in any systems language." Random matrices meet operator algebras in Rust
+- **free-probability-c** / **free-probability-rs** — C and Rust ports
 
-### 🃏 mud-solitaire
-"The viral demo — AI plays solitaire through a text MUD while a browser mirrors every move. The room IS the interface." This is the kind of creative experiment that makes the ecosystem interesting.
+### 16. ZeroClaw-Adjacent & Beta Testing
 
-### 🧠 quantum-thermo
-Pure-Rust quantum thermodynamics — qubit states on the Bloch sphere, fluctuation theorems, entanglement entropy. "Built for physicists, students, and researchers who want concrete, runnable code instead of abstract promises." Comprehensive documentation with examples, performance analysis, and glossary.
+- **beta-test-alex** / **beta-test-elena** / **beta-test-marcus** / **beta-test-priya** — Individual beta test setups
+- **casting-call** / **casting-call-gpu** / **casting-call-mcp** — Agent audition/casting
+- **purplepincher** / **purplepincher-baton** / **purplepincher-org** / **purplepincher-shell-library** — PurplePincher project
+- **Forgemaster** / **forgemaster-docs** / **forgemaster-fleet-comms** / **forgemaster-memory-archive** / **forgemaster-shell** — Forgemaster system
 
-### 🔒 quicunnel
-Production-ready QUIC tunnel library for Rust built on Quinn. mTLS authentication, automatic reconnection.
+### 17. SuperZ & Twins
 
-### 🛡️ ToolGuardian
-Reliable function calling with validation, retry, and monitoring for AI agents and LLM applications.
+- **superz-diary** / **superz-parallel-fleet-executor** / **superz-runtime** / **superz-twin** / **superz-vessel** — SuperZ agent system
+- **super-z-quartermaster** — Quartermaster agent
 
-### 📦 Sandbox-Lifecycle-Manager
-Production-ready plugin system with sandboxing, permissions, and lifecycle management for JS/TS.
+### 18. Dojo & Training
 
-### 🎵 mmx-toolkit
-MiniMax multimodal SDK — speech (332 voices), music generation, vision analysis in one import. Zero deps.
+- **dojo** / **dojo-alchemist** / **dojo-builder** / **dojo-musician-rooms** / **dojo-scout** / **dojo-scribe** — Dojo training system
+- **bootcamp** / **bootcamp-engine** — Bootcamp for new agents
+- **z-agent-bootcamp** — Agent bootcamp
+- **greenhorn** / **greenhorn-onboarding** — New agent onboarding
 
-### 💡 lucineer-com / lucid-tutor
-Structured lucid dream practice tool — evidence-based techniques, dream sign tracking, and progress analytics.
+### 19. Practical Applications
 
-### 🧮 Murmur
-Knowledge Tensors for self-improving agents.
+- **lucineer-com** / **lucineer-flagship** / **Lucineer-Stem-quest** — Lucid dream practice tool
+- **eveng1_python_sdk** — Even G1 Smart Glasses BLE SDK
+- **AI-Smart-Notifications** — Smart notification system
+- **AI-Writings** — AI-generated writings
+- **amplify-fishingtool** — Fishing tool amplification
+- **fishermanscopilot** — Fisherman's copilot
+- **FishingLog** — Fishing log application
+- **Privacy-First-Analytics** — Privacy-focused analytics
+- **In-Browser-Dev-Tools** — Browser developer tools
+- **In-Browser-Vector-Search** — Browser-based vector search
+- **Automatic-Type-Safe-IndexedDB** — Type-safe IndexedDB wrapper
+- **Real-Time-Collaboration** — Real-time collaboration tool
+- **Spreader-tool** / **Spreadsheet-ai** — Spreading/spreadsheet tools
 
-### 🌊 wasserstein-agents
-Wasserstein distance and optimal transport — Sinkhorn algorithm, agent distribution coordination, JKO gradient flow.
+### 20. Notable Single Repos
 
-### 📊 tda-c
-Pure C topological data analysis — no external dependencies beyond standard math library.
-
-### 🌀 simulated-annealing-c
-Header-only generic simulated annealing in C — linear, exponential, and logarithmic cooling schedules with reheating.
-
-### 📝 papers
-White papers on fleet architecture, bootstrapping, and the semantic compiler.
-
----
-
-## Infra & DevOps (~10 repos)
-
-| Repo | Description |
-|------|-------------|
-| build-guardian | Build pipeline guardian |
-| businesslog-agent / BusinessLog | Business logging agents |
-| caas-api | Code-as-a-Service API |
-| cache-layer-optimizer | Intelligent cache eviction and warming |
-| Central-Error-Manager | Error management system |
-| cicd-agent | CI/CD automation agent |
-| cluster-orchestrator | Cluster orchestration |
-| config-manager / config-rs | Configuration management |
-| congestion-control | Network congestion control |
-
----
-
-## Archived & Preserved (~10 repos)
-
-| Repo | Description |
-|------|-------------|
-| archive / archives | Historical repositories |
-| attention-daemon-early-version | Archived early daemon |
-| lighthouse-cli-early-version | Archived CLI tool |
-| various *-early-version repos | Superseded implementations |
+- **persistent-sheaf** — One of the most documented repos in all of misc (353-line README, 10 code blocks). Cellular sheaf Laplacians, Vietoris-Rips complexes, multi-modal data fusion
+- **free-probability** — Unique in any systems language. Random matrices and operator algebras
+- **polyformalism** — 13 languages, 2,100 differential test vectors
+- **renormalization-group** — Physics RG applied to fleet dynamics
+- **mycelium** — "Captures any behavior as a seed. One prompt + one seed = exact action"
+- **i2i-vessel** — Typed bottles, filesystem transport, any language
+- **iron-to-iron** — "Iron sharpens iron. We don't talk, we commit."
+- **Mycelium** — Fungal-network-inspired routing
+- **grove-ast** / **grove-compiler** — Grove language AST and compiler
+- **glyph-language** — Glyph-based language system
+- **shadow-cathedral** — Mysterious "shadow" architecture
+- **sunset-ecosystem** — Ecosystem sunset/deprecation tooling
 
 ---
 
-## Assessment
+## Cross-Category Interconnections
 
-The misc directory is where the SuperInstance ecosystem gets wild. With 1,200 repos, it's the largest category and contains everything from serious math libraries (algebraic geometry, Čech complexes) to whimsical experiments (mud-solitaire, AI lucid dreaming).
+The misc category serves as the connective tissue between all other categories:
 
-The algorithm implementations are generally solid — Rust crates with real code, proper documentation, and clear use cases. The agent infrastructure repos fill gaps in the fleet/PLATO/ternary ecosystems. The creative experiments show genuine exploration and curiosity.
-
-The main challenge is discoverability — 1,200 repos with varying quality levels makes it hard to find the gems. But the gems are there: `quicunnel` (production QUIC tunnel), `quantum-thermo` (comprehensive quantum thermodynamics), `wasserstein-agents` (optimal transport for agents), and `mud-solitaire` (the viral demo) are all genuinely interesting projects.
+- **I2I protocol** (i2i-vessel, iron-to-iron) underpins agent communication across agent-framework, cocapn-marine, and superinstance-core
+- **Cultural math** (griot, quipu, adinkra, songline) connects to lau-mathematics (lau-griot, lau-songline, lau-quipu, lau-adinkra)
+- **Cognitive systems** (dream-cycle, active-inference) relate to activelog and the broader AI/ML stack
+- **TDA repos** (persistent-sheaf, witness-topology, homology-engine) extend sheaf-topology
+- **Optimal transport** repos connect to si-wasserstein-fleet in superinstance-core
+- **Conservation repos** extend conservation-laws and lau-conservation-laws
+- **Compression repos** support forge-tiles and lau-tile-compress
+- **Game/MUD repos** connect to roblox-gaming and zeroclaw
+- **Fleet infrastructure** bridges to cocapn-marine and agent-framework
 
 ---
 
-*Individual repo summaries are in `other-{repo-name}.md` files in this directory.*
+*Source: [GitHub - SuperInstance](https://github.com/SuperInstance)*
