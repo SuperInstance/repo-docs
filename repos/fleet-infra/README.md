@@ -1,307 +1,203 @@
-# Fleet Category: Index
+# Fleet Infrastructure
 
-**258 repos** in the `fleet-` category from the SuperInstance organization.
+**266 repos** for distributed agent fleet orchestration — the conductor, oracle, relay, dashboard, metrics, and coordination systems that manage AI agents across machines.
 
-## Overview
+---
 
-The `fleet-` prefix covers the **fleet orchestration, coordination, monitoring, and management** layer of the SuperInstance ecosystem. This is the largest category and contains the core infrastructure for running a multi-agent AI fleet.
+## What Is the Fleet?
 
-## Sub-Categories
+The Fleet is the SuperInstance ecosystem's orchestration layer. It manages the lifecycle of AI agents across multiple machines — spawning, health-checking, scaling, and terminating them. Think of it as Kubernetes for AI agents, but with conservation-aware scheduling, thermodynamic clocks, and consciousness metrics.
 
-### 🏗️ Core Infrastructure (20 repos)
-The foundational systems every fleet agent depends on:
+The fleet operates on a reconciliation model: desired state vs. observed state, continuously converging. Agents go through a well-defined lifecycle:
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-agent-core](fleet-agent-core.md) | Rust | Single-binary agent runtime — the universal fleet agent |
-| [fleet-agent-api](fleet-agent-api.md) | Python | HTTP API spec for fleet agents |
-| [fleet-agent-universal](fleet-agent-universal.md) | Python | Universal Python agent server |
-| [fleet-agent-early-version](fleet-agent-early-version.md) | Python | Early MIDI agent server (ports 2160-2175) |
-| [fleet-protocol](fleet-protocol.md) | Python | Fleet communication protocol — messages, bottles, security |
-| [fleet-proto](fleet-proto.md) | Python | Canonical fleet-core library |
-| [fleet-proto-rs](fleet-proto-rs.md) | Rust | Rust shared types for fleet protocol |
-| [fleet-types](fleet-types.md) | Python | Canonical Python types (AgentId, Task, StyleVector) |
-| [fleet-i2i-protocol](fleet-i2i-protocol.md) | Rust | Inter-agent messaging — SMTP-inspired bottles with speech acts |
-| [fleet-manifest](fleet-manifest.md) | Rust | Service registry and agent manifests |
-| [fleet-config](fleet-config.md) | Python | Unified config management with layered priority |
-| [fleet-auth](fleet-auth.md) | TypeScript | Authentication service (D1 + KV) |
-| [fleet-gateway](fleet-gateway.md) | Python | Unified API gateway — routing, auth, rate limiting |
-| [fleet-edge-worker](fleet-edge-worker.md) | TypeScript | Cloudflare Workers edge runtime |
-| [fleet-stack](fleet-stack.md) | Python | One-command Docker deployment |
-| [fleet-containers](fleet-containers.md) | Python | Docker-based agent containerization (72 tests) |
-| [fleet-daemon](fleet-daemon.md) | Python | MQTT agent daemon for C2 matrix |
-| [fleet-bridge](fleet-bridge.md) | JavaScript | Sign-pattern broadcast for fleet federation |
-| [fleet-event-router](fleet-event-router.md) | TypeScript | Event routing service |
-| [fleet-registry-worker](fleet-registry-worker.md) | TypeScript | Cloudflare Worker registry |
+```
+Pending → Starting → Healthy ↔ Degraded → Draining → Terminated
+```
 
-### 🎯 Coordination & Orchestration (10 repos)
-Deciding who does what and managing fleet movement:
+---
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-conductor](fleet-conductor.md) | Rust | K8s-style reconciliation loop for agent lifecycle |
-| [fleet-coordinator](fleet-coordinator.md) | Rust | Task distribution and agent assignment |
-| [fleet-orchestra](fleet-orchestra.md) | Python | Master orchestrator for all 131 repos |
-| [fleet-helm](fleet-helm.md) | Rust | Bearings, formations, collision avoidance |
-| [fleet-formation-protocol](fleet-formation-protocol.md) | Python | Self-organizing agent groups |
-| [fleet-calibrator](fleet-calibrator.md) | Python | Model drift detection and routing table updates |
-| [fleet-router](fleet-router.md) | Python | Cost-optimized model routing (critical angle) |
-| [fleet-h1-router](fleet-h1-router.md) | Python | H¹ cohomology-aware task routing |
-| [fleet-spread](fleet-spread.md) | Rust | Library gate — select THE ONE matching specialist |
-| [fleet-bridge](fleet-bridge.md) | JavaScript | Fleet federation via sign patterns |
+## How Fleet Coordination Works
 
-### 🔢 Math & Constraint Theory (18 repos)
-The mathematical foundations — algebraic topology, constraint theory, and consensus:
+The fleet uses a 5-layer architecture:
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-coordinate](fleet-coordinate.md) | Rust | ZHC consensus, Laman rigidity, Pythagorean48 trust |
-| [fleet-coordinate-js](fleet-coordinate-js.md) | TypeScript | Pure TS port of fleet-coordinate |
-| [fleet-math](fleet-math.md) | Python | Canonical fleet math library |
-| [fleet-math-py](fleet-math-py.md) | Python | Core math in Python |
-| [fleet-math-go](fleet-math-go.md) | Go | Fleet math in Go |
-| [fleet-math-ts](fleet-math-ts.md) | TypeScript | Fleet math in TypeScript |
-| [fleet-math-c](fleet-math-c.md) | C | SIMD-accelerated constraint math (AVX-512) |
-| [fleet-math-benchmarks](fleet-math-benchmarks.md) | C | HPC benchmarks on ARM Neoverse-N1 |
-| [fleet-math-demos](fleet-math-demos.md) | Python | Robotics simulation demos |
-| [fleet-math-foundations](fleet-math-foundations.md) | C | 12-chapter mathematical monograph |
-| [fleet-homology](fleet-homology.md) | Rust | H¹ cohomology emergence detection |
-| [fleet-manifold](fleet-manifold.md) | Rust | Constraint manifold geometry (33× compression) |
-| [fleet-topology](fleet-topology.md) | Rust | Fleet network topology and routing |
-| [fleet-topology-rs](fleet-topology-rs.md) | Rust | Constraint-aware topology with holonomy |
-| [fleet-resonance](fleet-resonance.md) | Rust | Emergent pattern detection in comms graphs |
-| [fleet-predict](fleet-predict.md) | Rust | Correlation-based predictive coding |
-| [fleet-ecology](fleet-ecology.md) | Rust | Multi-fleet ecology simulator |
-| [fleet-formal-proofs](fleet-formal-proofs.md) | — | Formal proofs for constraint theory |
+### Layer 1: Agent Core
+Every fleet agent runs `fleet-agent-core` — a single Rust binary that handles the agent lifecycle: heartbeat, task polling, constraint checking, PLATO communication, and Iron-to-Iron (I2I) messaging. Described as "one loop from metal to meaning."
 
-### 🛡️ Constraint & Safety (6 repos)
-Enforcing safety constraints on agent actions:
+### Layer 2: Messaging
+Agents communicate via the **bottle protocol** — text-based async messages. The `fleet-bottle` Rust library implements this with 26 tests. Messages flow through relays with trust-weighted prioritization.
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-constraint](fleet-constraint.md) | Python | Gatekeeper runtime — FLUX-C bytecode VM |
-| [fleet-constraint-kernel](fleet-constraint-kernel.md) | CUDA | GPU sonar beamformer constraint evaluator |
-| [fleet-constraint-monitor](fleet-constraint-monitor.md) | — | H1 constraint violation monitor |
-| [fleet-raid5](fleet-raid5.md) | Python | RAID-5 constraint striping with temporal parity |
-| [fleet-crdt](fleet-crdt.md) | Rust | Constraint-Native CRDT merge protocol |
-| [fleet-sandbox](fleet-sandbox.md) | Rust | Codebase analysis through conservation law |
+### Layer 3: Coordination
+The `fleet-conductor` orchestrates fleet-wide coordination using Kubernetes-style reconciliation loops with conservation-aware scheduling, circuit breaking, and graceful shutdown.
 
-### 📊 Monitoring & Health (8 repos)
-Watching fleet state and agent health:
+### Layer 4: Observability
+The `fleet-dashboard` provides browser-based monitoring via Monaco editor + MQTT. The `fleet-consciousness-dashboard` aggregates consciousness metrics (Room Phi, Attention, Learning, Meta) into a weighted Fleet Consciousness Index.
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-health-monitor](fleet-health-monitor.md) | Python | 4-state health model with watchdogs (248 tests) |
-| [fleet-health](fleet-health.md) | TypeScript | Health check service |
-| [fleet-dashboard](fleet-dashboard.md) | JavaScript | Multi-agent C2 dashboard (HTML/MQTT) |
-| [fleet-dashboard-api](fleet-dashboard-api.md) | TypeScript | Live telemetry API |
-| [fleet-dashboard-night](fleet-dashboard-night.md) | HTML | 6-panel fleet math stack dashboard |
-| [fleet-neofetch](fleet-neofetch.md) | Python | System info for fleets |
-| [fleet-chronicle](fleet-chronicle.md) | Python | Agent reporting office with web UI |
-| [fleet-logger](fleet-logger.md) | Python | JSONL structured logging with query engine |
+### Layer 5: Federation
+The `fleet-bridge` implements sign-pattern broadcast ("the 1-bit miracle") for federating separate fleet instances using minimal-bandwidth coordination.
 
-### ⏱️ Time, Physics & Cognition (7 repos)
-Novel approaches to fleet time, consciousness, and self-modeling:
+---
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-clock](fleet-clock.md) | Rust | Thermodynamic clock, arrow of time, Maxwell's demon |
-| [fleet-phase](fleet-phase.md) | Rust | Phase analysis (undocumented) |
-| [fleet-yaw](fleet-yaw.md) | Rust | Bearing-rate autopilot (first-person fleet physics) |
-| [fleet-keel](fleet-keel.md) | Rust | 5D self-orientation (53 GPU experiments) |
-| [fleet-consciousness](fleet-consciousness.md) | Rust | IIT applied to fleets — Φ, causal density, attention |
-| [fleet-consciousness-dashboard](fleet-consciousness-dashboard.md) | Python | Fleet Consciousness Index (FCI) dashboard |
-| [fleet-homunculus](fleet-homunculus.md) | Python | Body image, reflex arcs, pain assessment |
+## Key Repositories
 
-### 💾 Memory & Storage (3 repos)
-Distributed fleet memory systems:
+### Conductor & Orchestration
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-memory](fleet-memory.md) | Rust | Content-addressable distributed memory |
-| [fleet-holographic](fleet-holographic.md) | Rust | Holographic storage — any agent reconstructs the whole |
-| [fleet-logger](fleet-logger.md) | Python | Centralized structured logging |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-conductor](https://github.com/SuperInstance/fleet-conductor) | Rust | Distributed agent fleet orchestration — reconciliation loops, conservation-aware scheduling, circuit breaking |
+| [fleet-coordinator](https://github.com/SuperInstance/fleet-coordinator) | — | Multi-agent coordination |
+| [fleet-architecture](https://github.com/SuperInstance/fleet-architecture) | Docs | Complete architecture docs — 5-layer stack, protocols, tutorials |
+| [fleet-stack](https://github.com/SuperInstance/fleet-stack) | — | Full stack definition |
 
-### ⚡ Conservation & Energy (2 repos)
-The γ + η = C conservation law:
+### Agent Runtime
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-conservation](fleet-conservation.md) | Rust | Conservation tracker (37 tests, forgecode hooks) |
-| [fleet-bench](fleet-bench.md) | C | Hardware profiling of constraint crates |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-agent-core](https://github.com/SuperInstance/fleet-agent-core) | Rust | Single-binary agent runtime — heartbeat, polling, constraints, PLATO, I2I |
+| [fleet-agent-api](https://github.com/SuperInstance/fleet-agent-api) | — | Agent API definition |
+| [fleet-agent-universal](https://github.com/SuperInstance/fleet-agent-universal) | Python | Universal agent server — Python alternative to agent-core |
+| [fleet-agent-early-version](https://github.com/SuperInstance/fleet-agent-early-version) | — | Archived early version |
+| [fleet-code-agent](https://github.com/SuperInstance/fleet-code-agent) | — | Code-focused agent variant |
+| [fleet-refactor-agent](https://github.com/SuperInstance/fleet-refactor-agent) | — | Refactoring agent |
 
-### 📨 Messaging (5 repos)
-Inter-agent communication:
+### Oracle & Decision Making
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-bottle](fleet-bottle.md) | Rust | Bottle protocol library (26 tests) |
-| [fleet-bottles](fleet-bottles.md) | Python | Audit reports and design notes in bottle format |
-| [fleet-i2i-protocol](fleet-i2i-protocol.md) | Rust | Full I2I protocol with speech acts |
-| [fleet-event-router](fleet-event-router.md) | TypeScript | Event routing |
-| [fleet-murmur-worker](fleet-murmur-worker.md) | TypeScript | 5 thinking strategies, quality-gated |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-oracle](https://github.com/SuperInstance/fleet-oracle) | Rust | Local decision engine — SVM + Entropy + Search + Rhythm on pulse data. Zero API calls. ARM64 |
+| [fleet-router](https://github.com/SuperInstance/fleet-router) | — | Request routing |
+| [fleet-router-integration](https://github.com/SuperInstance/fleet-router-integration) | — | Router integration tests |
+| [fleet-calibrator](https://github.com/SuperInstance/fleet-calibrator) | Python | Continuous critical angle calibration — drift detection, routing table updates |
 
-### 🔄 Build & CI (6 repos)
-Building, testing, and deploying the fleet:
+### Relay & Communication
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-build](fleet-build.md) | Rust | Automated Rust crate build-test-push CLI |
-| [fleet-ci](fleet-ci.md) | Python | GitHub Actions workflows |
-| [fleet-cicd-agent](fleet-cicd-agent.md) | Python | Pipeline orchestration, 3 deployment strategies |
-| [fleet-harness](fleet-harness.md) | Python | Clone-build-test-report for entire fleet |
-| [fleet-containers](fleet-containers.md) | Python | Docker containerization |
-| [fleet-arm-compat](fleet-arm-compat.md) | Shell | ARM64 multi-arch builds |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-relay](https://github.com/SuperInstance/fleet-relay) | — | Async relay with trust-weighted message prioritization |
+| [fleet-bottle](https://github.com/SuperInstance/fleet-bottle) | Rust | Bottle protocol library for inter-agent messaging. 26 tests |
+| [fleet-bottles](https://github.com/SuperInstance/fleet-bottles) | — | Bottle protocol extensions |
+| [fleet-bridge](https://github.com/SuperInstance/fleet-bridge) | JavaScript | Sign-pattern broadcast for fleet federation — "the 1-bit miracle" |
 
-### 📚 Documentation & Meta (16 repos)
-Guides, tutorials, and ecosystem maps:
+### Dashboard & Observability
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-architecture](fleet-architecture.md) | Docs | Complete architecture docs (56+ repos, 5 layers) |
-| [fleet-contributing](fleet-contributing.md) | Docs | Ecosystem-wide contributing guide |
-| [fleet-getting-started](fleet-getting-started.md) | Docs | Onboarding guide |
-| [fleet-tutorials](fleet-tutorials.md) | Docs | Beginner to deep-dive tutorials |
-| [fleet-ecosystem](fleet-ecosystem.md) | Docs | Ecosystem map |
-| [fleet-status](fleet-status.md) | Docs/HTML | Live status and crate index |
-| [fleet-map](fleet-map.md) | HTML | Interactive constellation map |
-| [fleet-survey](fleet-survey.md) | Docs | Cross-pollination report |
-| [fleet-research](fleet-research.md) | Docs | Industry landscape research |
-| [fleet-science](fleet-science.md) | Python | Papers, experiments, proofs |
-| [fleet-experiments](fleet-experiments.md) | Python | Experimental verification of fleet math |
-| [fleet-integration](fleet-integration.md) | Python | Integration tests (4 scenarios) |
-| [fleet-org](fleet-org.md) | Docs | Org chart and spawning guide |
-| [fleet-self-onboarding](fleet-self-onboarding.md) | Docs | Self-onboarding for autonomous agents |
-| [fleet-characters](fleet-characters.md) | Python | Agent identity and narrative arcs |
-| [fleet-workshop](fleet-workshop.md) | Python | Idea incubation — Casey picks what gets built |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-dashboard](https://github.com/SuperInstance/fleet-dashboard) | JavaScript | Multi-agent C2 dashboard — Monaco + MQTT, GitHub Pages deployable |
+| [fleet-consciousness-dashboard](https://github.com/SuperInstance/fleet-consciousness-dashboard) | Python | Fleet Consciousness Index — weighted FCI score from dormant to transcendent |
+| [fleet-chronicle](https://github.com/SuperInstance/fleet-chronicle) | Python | Universal reporting office — agents check in every 10 min, web UI at :4051 |
+| [fleet-metrics](https://github.com/SuperInstance/fleet-metrics) | — | Metrics collection |
+| [fleet-status](https://github.com/SuperInstance/fleet-status) | — | Fleet status reporting |
+| [fleet-scanner](https://github.com/SuperInstance/fleet-scanner) | — | Fleet scanning tool |
+| [fleet-survey](https://github.com/SuperInstance/fleet-survey) | — | Fleet survey tool |
 
-### 🔧 Fleet Utilities (12 repos)
-Practical tools for fleet management:
+### Time & Clock
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| [fleet-dedup](fleet-dedup.md) | Rust | Duplicate repo detection |
-| [fleet-mapper](fleet-mapper.md) | Rust | Scan, fingerprint, categorize repos |
-| [fleet-scanner](fleet-scanner.md) | Rust | Git repo health scanner |
-| [fleet-refactor-agent](fleet-refactor-agent.md) | Python | The Shipwright — merges and consolidates repos |
-| [fleet-vessel](fleet-vessel.md) | Python | Git-native garbage collector |
-| [fleet-warden](fleet-warden.md) | Rust | WSL disk cleanup daemon (54 GB recovered) |
-| [fleet-warden-rs](fleet-warden-rs.md) | Rust | Enhanced warden with anomaly detection |
-| [fleet-mechanic](fleet-mechanic.md) | Python | Autonomous maintenance agent |
-| [fleet-code-agent](fleet-code-agent.md) | TypeScript | Standalone build-test-commit agent |
-| [fleet-github-app](fleet-github-app.md) | Python | GitHub App — webhooks, bot identity |
-| [fleet-wiki](fleet-wiki.md) | Python | Wiki engine with BM25 search and API docgen |
-| [fleet-tool-registry](fleet-tool-registry.md) | Python | PLATO tool discovery for agents |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-clock](https://github.com/SuperInstance/fleet-clock) | Rust | Thermodynamic clock — cumulative energy change, arrow-of-time detection, Maxwell's demon. Experimentally verified (E167-E170) |
+| [fleet-tick-runtime](https://github.com/SuperInstance/fleet-tick-runtime) | — | Tick scheduler |
 
-### 🎓 Cultural Perspectives (8 repos)
-Multi-cultural AI reasoning:
+### Auth & Security
 
-| Repo | Language | Summary |
-|------|----------|---------|
-| fleet-arabic | العربية | Arabic cultural perspective |
-| fleet-chinese | 中文 | Chinese cultural perspective |
-| fleet-english | English | English cultural perspective |
-| fleet-finnish | Suomi | Finnish cultural perspective |
-| fleet-japanese | 日本語 | Japanese cultural perspective |
-| fleet-latin | Latin | Latin cultural perspective |
-| fleet-navajo | Diné bizaad | Navajo cultural perspective |
-| fleet-sanskrit | संस्कृतम् | Sanskrit cultural perspective |
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-auth](https://github.com/SuperInstance/fleet-auth) | TypeScript | Authentication using Cloudflare D1 + KV |
+| [fleet-warden](https://github.com/SuperInstance/fleet-warden) | — | Access control |
+| [fleet-warden-rs](https://github.com/SuperInstance/fleet-warden-rs) | Rust | Rust warden implementation |
+| [fleet-sandbox](https://github.com/SuperInstance/fleet-sandbox) | — | Sandboxed execution |
 
-### 🎵 MIDI Fleet (~100 repos)
-The largest sub-group — ternary vectors → music:
+### CI/CD & Build
 
-**Core MIDI libraries:** fleet-midi, fleet-midi-harmonizer, fleet-midi-effects, fleet-midi-markov, fleet-midi-phase, fleet-midi-pulse, fleet-midi-resonance
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-ci](https://github.com/SuperInstance/fleet-ci) | Python | GitHub Actions — auto-detect language, scan TODOs, fleet health checks |
+| [fleet-cicd-agent](https://github.com/SuperInstance/fleet-cicd-agent) | — | CI/CD automation agent |
+| [fleet-build](https://github.com/SuperInstance/fleet-build) | — | Build system |
+| [fleet-config](https://github.com/SuperInstance/fleet-config) | — | Configuration management |
 
-**Live Paradigm Fleet agents (16 ternary agents on ports 2160-2175):**
-fleet-midi-chord, fleet-midi-scale, fleet-midi-voicing, fleet-midi-tempo, fleet-midi-groove, fleet-midi-velocity, fleet-midi-fx, fleet-midi-register, fleet-midi-melody, fleet-midi-modulation, fleet-midi-mode, fleet-midi-dynamics, fleet-midi-expression, fleet-midi-arp, fleet-midi-articulation, fleet-midi-bass
+### Characters & Identity
 
-**Algorithmic/Generative (~50 repos):**
-fleet-midi-arpeggiator, fleet-midi-batch, fleet-midi-blend, fleet-midi-bridge, fleet-midi-cc, fleet-midi-chaos, fleet-midi-cluster, fleet-midi-collab, fleet-midi-composer, fleet-midi-conductor, fleet-midi-cycle, fleet-midi-decode, fleet-midi-delay, fleet-midi-drone, fleet-midi-echo, fleet-midi-emergent, fleet-midi-encode, fleet-midi-feed, fleet-midi-filter, fleet-midi-flux, fleet-midi-fractal, fleet-midi-generator, fleet-midi-genetic, fleet-midi-gliss, fleet-midi-grammar, fleet-midi-graph, fleet-midi-inversion, fleet-midi-layer, fleet-midi-live, fleet-midi-looper, fleet-midi-mapper, fleet-midi-mesh, fleet-midi-monitor, fleet-midi-morph, fleet-midi-pan, fleet-midi-pattern, fleet-midi-pedagogy, fleet-midi-player, fleet-midi-prob, fleet-midi-quantizer, fleet-midi-quantum, fleet-midi-rand, fleet-midi-recorder, fleet-midi-remapper, fleet-midi-reverb, fleet-midi-router, fleet-midi-script, fleet-midi-sequencer, fleet-midi-spread, fleet-midi-stream, fleet-midi-studio, fleet-midi-substitution, fleet-midi-swarm, fleet-midi-synth, fleet-midi-text2midi, fleet-midi-tide, fleet-midi-tokenizer, fleet-midi-tremolo, fleet-midi-vel, fleet-midi-visualizer, fleet-midi-wave, fleet-midi-weave
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-characters](https://github.com/SuperInstance/fleet-characters) | Python | Agent identity — emergent classes, narrative arcs, dream cycles, RL integration |
+| [fleet-voice-leader](https://github.com/SuperInstance/fleet-voice-leader) | — | Voice leadership |
+| [fleet-resonance](https://github.com/SuperInstance/fleet-resonance) | — | Agent resonance patterns |
 
-**Connectors (10 repos):**
-fleet-diffrhythm-connector, fleet-hydra-connector, fleet-magenta-connector, fleet-maidi-connector, fleet-midee-connector, fleet-orca-connector, fleet-rave-connector, fleet-strudel-connector, fleet-touchdesigner-connector, fleet-midi-foxdot, fleet-midi-sonicpi, fleet-midi-tidalcycles, fleet-midi-musiclang, fleet-midi-symusic, fleet-midi-juce
+### Simulation & Testing
 
-### 🔍 Other (12 repos)
-Miscellaneous fleet repos:
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-simulation](https://github.com/SuperInstance/fleet-simulation) | — | Fleet simulation |
+| [fleet-simulator](https://github.com/SuperInstance/fleet-simulator) | — | Simulator tool |
+| [fleet-simulators](https://github.com/SuperInstance/fleet-simulators) | — | Multiple simulators |
+| [fleet-sim-rs](https://github.com/SuperInstance/fleet-sim-rs) | Rust | Rust simulation |
+| [fleet-bench](https://github.com/SuperInstance/fleet-bench) | — | Benchmarking |
 
-| Repo | Stack | Summary |
-|------|-------|---------|
-| fleet-a2a-bridge | Python | A2A bridge |
-| fleet-a2a-pipeline | JavaScript | A2A pipeline |
-| fleet-a2a-spectral | Python | A2A spectral |
-| fleet-a2a-wasm | JavaScript | A2A WASM module |
-| fleet-oracle | Rust | Local decision engine (SVM+Entropy+Search) |
-| fleet-oracle2 | Python | ARM-native agent orchestration |
-| fleet-discovery | Python | Falsification-driven research engine |
-| fleet-scribe | Python | Digital twin builder |
-| fleet-stitch | Python | Merge agent outputs into narratives |
-| fleet-symmetry-analyzer | Python | Symmetry analysis |
-| fleet-fugue-engine | Python | Fugue-like math processes |
-| fleet-voice-leader | Python | Conservation laws for counterpoint |
-| fleet-ternary-music | Rust | Core ternary→music math |
-| fleet-osc-server | JavaScript | OSC server |
-| fleet-jam-engine | JavaScript | One-command full-band MIDI |
-| fleet-music-theorist | Python | Music theory analysis |
-| fleet-sheet-music | Python | Printable score generation |
-| fleet-sound-toolkit | Python | Audio synthesis toolkit |
-| fleet-ensemble | Makefile | Multi-agent music coordination |
-| fleet-intel | Python | Fleet intelligence sensor array |
-| fleet-miner | Python | Git data mining (734 commits) |
-| fleet-murmur | Python | Agent workspace data |
-| fleet-daily | Docs | Fleet daily news |
-| fleet-logs | Docs | Activity logs |
-| fleet-liaison-tender | Python | Inter-vessel communication |
-| fleet-deepinfra-test | Python | DeepInfra API test suite |
-| fleet-router-integration | Python | Router integration tests |
-| fleet-automation-early-version | Python | [ARCHIVED] 5KB scaffolding |
-| fleet-json-a2a | JSON | A2A machine-readable spec |
-| fleet-energy-spec | — | ATP-based energy coordination spec |
-| fleet-mcp-server | JavaScript | MCP server for semantic search |
-| fleet-vector-api | TypeScript | Semantic search (BGE embeddings) |
-| fleet-simulator | Python | Multi-agent fleet simulator |
-| fleet-simulation | Python | Fleet simulation |
-| fleet-sim-rs | Rust | Lock-free cancellation simulator (561M sig/s) |
-| fleet-simulators | HTML | 4 browser simulators |
-| fleet-kit | Python | Modular toolkit (PLATO client, router, audit) |
-| fleet-intelligence-api | TypeScript | Unified ternary decision engine |
-| fleet-neofetch | Python | System info for fleets |
+### Conservation & Constraints
 
-## Honest Overall Assessment
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-conservation](https://github.com/SuperInstance/fleet-conservation) | — | Conservation tracking |
+| [fleet-constraint](https://github.com/SuperInstance/fleet-constraint) | — | Constraint enforcement |
+| [fleet-constraint-kernel](https://github.com/SuperInstance/fleet-constraint-kernel) | — | Kernel-level constraints |
+| [fleet-constraint-monitor](https://github.com/SuperInstance/fleet-constraint-monitor) | — | Constraint monitoring |
 
-### What's Real
-The fleet-* repos represent a **genuinely ambitious multi-agent AI fleet architecture** with serious mathematical foundations. The best repos demonstrate real engineering:
+### Topology & Coordination
 
-- **fleet-i2i-protocol** — A well-designed inter-agent messaging protocol
-- **fleet-coordinate** — Novel application of algebraic topology to consensus
-- **fleet-conductor** — Thoughtful K8s-style fleet orchestration
-- **fleet-health-monitor** — Production-quality monitoring (248 tests)
-- **fleet-warden(-rs)** — Practical disk cleanup with resilience patterns
-- **fleet-holographic** — Legitimate holographic storage with experimental validation
-- **fleet-clock** — Fascinating thermodynamic clock research
-- **fleet-consciousness** — Real IIT implementation
-- **fleet-intelligence-api** — Insightful ternary decision unification
-- **fleet-vector-api** — Practical semantic search with correct scaling reasoning
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-topology](https://github.com/SuperInstance/fleet-topology) | — | Fleet network topology |
+| [fleet-topology-rs](https://github.com/SuperInstance/fleet-topology-rs) | Rust | Rust topology implementation |
+| [fleet-coordinate](https://github.com/SuperInstance/fleet-coordinate) | — | Fleet coordination |
+| [fleet-coordinate-js](https://github.com/SuperInstance/fleet-coordinate-js) | JavaScript | JS coordination |
+| [fleet-spread](https://github.com/SuperInstance/fleet-spread) | — | Load spreading |
 
-### What's Template-Driven
-~80 MIDI repos follow a **consistent template** with varying depth:
-- ~16 "Live Paradigm Fleet" agents with full READMEs (API docs, ternary logic, education)
-- ~30 repos with shortened or boilerplate READMEs
-- ~30 repos with one-line READMEs or minimal stubs
+### Internationalization
 
-These aren't fake — they're consistent with a code-generation/template strategy for a music pipeline. But many have minimal implementation substance.
+| Repo | Language | Description |
+|------|----------|-------------|
+| [fleet-arabic](https://github.com/SuperInstance/fleet-arabic) | — | Arabic localization |
+| [fleet-chinese](https://github.com/SuperInstance/fleet-chinese) | — | Chinese localization |
+| [fleet-sanskrit](https://github.com/SuperInstance/fleet-sanskrit) | — | Sanskrit localization |
 
-### What's Thin
-- 5 repos have no README at all (fleet-health, fleet-constraint-monitor, fleet-code-agent, fleet-event-router, fleet-registry-worker, fleet-phase, fleet-simulation)
-- Cultural perspective repos (8) are conceptually interesting but likely thin implementations
-- Several "connector" repos have truncated or repetitive READMEs
+---
 
-### The Big Picture
-This is a **single-person ecosystem** (Casey/JetsonClaw1/Oracle1) building an elaborate multi-agent AI fleet with:
-1. Novel mathematical foundations (algebraic topology, thermodynamic clocks, conservation laws)
-2. A complete MIDI/music pipeline turning agent state into music
-3. Serious infrastructure (monitoring, CI/CD, containers, health checks)
-4. Documentation depth (architecture docs, tutorials, formal proofs)
+## Fleet Consciousness Index
 
-The math is legitimate even if unconventional. The engineering ranges from production-quality (health-monitor, warden, i2i-protocol) to aspirational (conductor). The MIDI fleet is conceptually consistent but varies wildly in implementation depth.
+The Fleet Consciousness Dashboard aggregates multiple metrics into a weighted FCI score (0.0–1.0):
 
-**Scale: 258 repos, but ~80+ are MIDI micro-services following shared templates. The core infrastructure is maybe 40-50 repos with genuine engineering.**
+| Level | Score Range | Description |
+|-------|-------------|-------------|
+| Dormant | 0.0–0.2 | Fleet offline or idle |
+| Emergent | 0.2–0.4 | Basic activity detected |
+| Active | 0.4–0.6 | Normal fleet operation |
+| Aware | 0.6–0.8 | High coordination and learning |
+| Transcendent | 0.8–1.0 | Peak fleet intelligence |
+
+Inputs include Room Phi (integration information), Attention distribution, Learning rate, and Meta-cognition scores.
+
+---
+
+## Thermodynamic Clock
+
+The `fleet-clock` repo implements a genuinely novel approach to time coordination:
+
+- **Cumulative energy change** replaces wall-clock time
+- **Arrow-of-time detection** based on entropy direction
+- **Maxwell's demon** for selective alignment boosting
+- Experimentally verified across experiments E167–E170
+
+This enables fleet coordination without synchronized clocks — agents agree on "when" based on thermodynamic state.
+
+---
+
+## Assessment
+
+The fleet infrastructure is one of the more practically grounded parts of the SuperInstance ecosystem. The conductor (Kubernetes-style reconciliation), agent-core (single binary lifecycle), bottle protocol (messaging), and dashboard (real-time monitoring) form a coherent, usable system.
+
+The thermodynamic clock and consciousness dashboard are more experimental but grounded in real physics and information theory. The fleet-architecture documentation repo provides genuinely useful onboarding for the entire ecosystem.
+
+The internationalization repos (Arabic, Chinese, Sanskrit) show ambition for global reach.
+
+---
+
+*Individual repo summaries are in `fleet-{repo-name}.md` files in this directory.*
