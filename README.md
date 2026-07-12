@@ -1,17 +1,18 @@
 # SuperInstance Repo Documentation
 
-Comprehensive analysis of all 4,098 repos in the SuperInstance organization.
+Honest summaries of all SuperInstance organization GitHub repositories.
 
-## Structure
--  — Top-level index with clusters, standout repos, quality assessment
--  — Per-category indexes
--  — Individual repo summaries
--  — (in progress) Tier-ranked production readiness assessment
--  — (in progress) Recommendations for merging related repos
--  — (in progress) Big-picture analysis
+## Categories
 
-## Stats
-- 4,098 total repos (3,327 original, 771 forks)
-- 25+ languages
-- 12 major thematic clusters
+| Category | Count | Index |
+|----------|-------|-------|
+| Constraint | 45 | [INDEX-constraint.md](./INDEX-constraint.md) |
+| Conservation | 58 | [INDEX-conservation.md](./INDEX-conservation.md) |
+| Music | 30 | [INDEX-music.md](./INDEX-music.md) |
+| A2A/A2UI | 7 | [INDEX-a2a.md](./INDEX-a2a.md) |
+| Edge | 58 | [INDEX-edge.md](./INDEX-edge.md) |
+| **Total** | **198** | |
 
+## Per-Repo Document Format
+
+Each repo has `{CATEGORY}-{REPO_NAME}.md` with: Intention, How it works, What it's for, Who would use it, Language/Stack, Status assessment, Honest assessment.
