@@ -1,0 +1,34 @@
+# court
+
+**Cluster:** constraint-theory  
+**Language:** Python  
+**Source:** [SuperInstance/court](https://github.com/SuperInstance/court)
+
+## Intention
+
+Fleet governance — proposals, votes, constitutional constraints for multi-agent coordination
+
+## How It Works
+
+Fleet governance — proposals, votes, constitutional enforcement.
+
+## What It's For
+
+Fleet governance — proposals, votes, constitutional constraints for multi-agent coordination
+
+## Who Would Use It
+
+Developers and researchers in the SuperInstance fleet ecosystem.
+
+## Language / Stack
+
+Python — part of the SuperInstance ecosystem.
+
+## Status Assessment
+
+- **Quality tier:** auto-generated
+- **Note:** Fleet-branded template, minimal substance (650 chars).
+
+## Honest Assessment
+
+Appears auto-generated. Generic fleet template with minimal substance. Likely created by an agent as part of a bulk scaffolding effort rather than organic development.
